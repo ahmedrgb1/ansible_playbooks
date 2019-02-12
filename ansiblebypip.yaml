@@ -1,6 +1,6 @@
 ---
 - name: "Do a demo"
-  hosts: groupA
+  hosts: groupAa
 
   tasks:
           - name: demo task 1
