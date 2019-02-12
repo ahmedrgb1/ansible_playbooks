@@ -7,7 +7,7 @@
 
   tasks: 
   - name: install nginx
-    debug: #package manager modules
+    debug: #package manager modules 'apt' ... 
       msg: "dnf install nginx"
 
   - name: ensure web directory
