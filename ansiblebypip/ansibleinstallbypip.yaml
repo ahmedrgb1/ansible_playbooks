@@ -5,5 +5,9 @@
   tasks:
           - name: install ansible
             pip:
+                    name: virtualenv 
+
+          - name: install ansible
+            pip:
                     name: ansible 
                     virtualenv: ~/challenge1
