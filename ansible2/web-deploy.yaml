@@ -3,11 +3,11 @@
   hosts: web
   serial: 1
 
- tasks: 
+  tasks: 
   - name: disable node
     debug:
       msg: "disable {{ inventory_hostname }}"
-  delegate_to: {{ groups['lb'][0] }}
+    delegate_to: {{ groups['lb'][0] }}
 
   - name: upgrade web
     debug:
@@ -16,4 +16,4 @@
   - name: enable node
     debug:
       msg: "enable {{ inventory_hostname }}"
-  delegate_to: {{ groups['lb'][0] }}
+    delegate_to: {{ groups['lb'][0] }}
