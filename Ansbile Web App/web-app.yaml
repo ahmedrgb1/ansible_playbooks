@@ -1,0 +1,27 @@
+--- 
+- name: configure web app 
+  hosts: web
+  vars: 
+    repo: myrepo.com/repo.git
+    version: 8
+
+  tasks: 
+  - name: install nginx
+    debug: #package manager modules
+      msg: "dnf install nginx"
+
+  - name: ensure web directory
+    debug: #file module can detect that the folder already exists 
+      msg: "mkdir /webapp"
+
+  - name: get content
+    debug: #git module can be used 
+      msg: "git clone --branch {{ version }} {{ repo }} /webapp"
+
+  - name: set ngnix configuration 
+    debug: #template module can be used 
+      msg: "put nginx config in place"    
+
+  - name: ensure ngnix running 
+    debug: #service module can be used 
+      msg: "service nginx start"
