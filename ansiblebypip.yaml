@@ -16,10 +16,9 @@
   hosts: groupB
 
   tasks:
-          - name: demo task 3
             debug:
                     msg: "this is task 3"
 
           - name: demo task 4
             debug:
-                    msg: "this is task 4"
+                    msg: "this is task 44"

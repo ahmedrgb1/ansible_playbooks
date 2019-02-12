@@ -1,0 +1,9 @@
+---
+- name: "Install Ansible Using Pip"
+  hosts: host1
+
+  tasks:
+          - name: install ansible
+            pip:
+                    name: ansible 
+                    virtualenv: ~/challenge1
