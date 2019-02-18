@@ -1,4 +1,3 @@
---- 
 - name: make dockers 
   hosts: localhost
   
@@ -9,7 +8,7 @@
       command: sleep 1d
       name: "busy{{ item }}"
     with_sequence: count=3
-
+    
   - name: add hosts
     add_hosts: #add to the hosts file to run tasks against them
       name: "busy{{ item }}"
