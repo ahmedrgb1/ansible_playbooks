@@ -1,24 +1,26 @@
-- name: make dockers 
+--- 
+- 
   hosts: localhost
-  
+  name: "make dockers"
   tasks: 
-  - name: make dockers
-    docker_container: # docker module 
-      image: busybox
-      command: sleep 1d
-      name: "busy{{ item }}"
-    with_sequence: count=3
-    
-  - name: add hosts
-    add_hosts: #add to the hosts file to run tasks against them
-      name: "busy{{ item }}"
-      groups: dockers
-      ansible_connection: docker
-    with_sequence: count=3
-
-- name: Hi from docker # this is a new play running against dockers group  
-  hosts: dockers 
-  
-  tasks:
-  - name: ping
-    raw: echo $HOSTNAME
+    - 
+      docker_container: 
+        command: "sleep 1d"
+        image: busybox
+        name: "busy{{ item }}"
+      name: "make dockers"
+      with_sequence: count=3
+    - 
+      add_hosts: 
+        ansible_connection: docker
+        groups: dockers
+        name: "busy{{ item }}"
+      name: "add hosts"
+      with_sequence: count=3
+- 
+  hosts: dockers
+  name: "Hi from docker"
+  tasks: 
+    - 
+      name: ping
+      raw: "echo $HOSTNAME"
