@@ -21,7 +21,14 @@
   - name: set ngnix configuration 
     debug: #template module can be used 
       msg: "put nginx config in place"    
+    notify: restart nginx # A Handler to restart the service if the config is updated 
+    changed_when: True # to simulate the handler onChange
 
   - name: ensure ngnix running 
     debug: #service module can be used 
       msg: "service nginx start"
+
+handlers:
+  - name: restart ngnix 
+      debug: # service module can be used here 
+        msg: "service nginx restart"
