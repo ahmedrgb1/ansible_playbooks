@@ -18,17 +18,17 @@
     debug: #git module can be used 
       msg: "git clone --branch {{ version }} {{ repo }} /webapp"
 
-  - name: set ngnix configuration 
-    debug: #template module can be used 
+  - name: set nginx configuration 
+    debug: #template module can be used, Handler to restart the service if the config is updated,  to simulate the handler onChange
       msg: "put nginx config in place"    
-    notify: restart nginx # A Handler to restart the service if the config is updated 
-    changed_when: True # to simulate the handler onChange
+    notify: restart nginx
+    changed_when: True
 
-  - name: ensure ngnix running 
+  - name: ensure nginx running 
     debug: #service module can be used 
       msg: "service nginx start"
 
  handlers:
-  - name: restart ngnix 
+  - name: restart nginx 
       debug: # service module can be used here 
         msg: "service nginx restart"
