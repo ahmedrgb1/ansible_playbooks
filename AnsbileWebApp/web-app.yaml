@@ -28,7 +28,7 @@
     debug: #service module can be used 
       msg: "service nginx start"
 
- handlers:
+handlers:
   - name: restart nginx 
       debug: # service module can be used here 
         msg: "service nginx restart"
